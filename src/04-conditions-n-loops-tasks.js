@@ -28,7 +28,6 @@
  *
  */
 function getFizzBuzz(num) {
-  // throw new Error('Not implemented');
   if (num % 3 === 0 && num % 5 === 0) {
     return 'FizzBuzz';
   }
@@ -54,7 +53,6 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-  // throw new Error('Not implemented');
   let result = 1;
   for (let i = 1; i <= n; i += 1) {
     result *= i;
@@ -76,7 +74,6 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-  // throw new Error('Not implemented');
   let sum = 0;
   for (let i = n1; i <= n2; i += 1) {
     sum += i;
@@ -185,7 +182,6 @@ function isInsideCircle(/* circle, point */) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-  // throw new Error('Not implemented');
   for (let i = 0; i < str.length; i += 1) {
     const char = str[i];
     if (str.indexOf(char) === i && str.indexOf(char, i + 1) === -1) {
@@ -236,7 +232,6 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-  // throw new Error('Not implemented');
   return str.split('').reverse().join('');
 }
 
@@ -254,7 +249,6 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-  // throw new Error('Not implemented');
   return Number(num.toString().split('').reverse().join(''));
 }
 
@@ -323,8 +317,29 @@ function getDigitalRoot(/* num */) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  const input = str.split('');
+  const stack = [];
+  let error = false;
+  for (let i = 0; i < input.length; i += 1) {
+    if (input[i] === '[' || input[i] === '(' || input[i] === '{' || input[i] === '<') {
+      stack.push(input[i]);
+    } else {
+      const last = stack.pop();
+      if ((last === undefined)
+      || (last === '[' && input[i] !== ']')
+      || (last === '(' && input[i] !== ')')
+      || (last === '{' && input[i] !== '}')
+      || (last === '<' && input[i] !== '>')) {
+        error = true;
+        break;
+      }
+    }
+  }
+  if (error || stack.length !== 0) {
+    return false;
+  }
+  return true;
 }
 
 
@@ -349,7 +364,6 @@ function isBracketsBalanced(/* str */) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-  // throw new Error('Not implemented');
   return num.toString(n);
 }
 
