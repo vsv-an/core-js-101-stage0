@@ -214,8 +214,8 @@ function findFirstSingleChar(str) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  return `${isStartIncluded === true ? '[' : '('}${a < b ? a : b}, ${a < b ? b : a}${isEndIncluded === true ? ']' : ')'}`;
 }
 
 
@@ -273,8 +273,31 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const num = ccn.toString().split('');
+  let sum = 0;
+
+  if (num.length % 2 !== 0) {
+    for (let i = 0; i < num.length; i += 1) {
+      if (i % 2 !== 0) {
+        sum += +num[i] * 2 > 9 ? +num[i] * 2 - 9 : +num[i] * 2;
+      } else {
+        sum += +num[i];
+      }
+    }
+    return sum % 10 === 0;
+  }
+  if (num.length % 2 === 0) {
+    for (let i = 0; i < num.length; i += 1) {
+      if (i % 2 === 0) {
+        sum += +num[i] * 2 > 9 ? +num[i] * 2 - 9 : +num[i] * 2;
+      } else {
+        sum += +num[i];
+      }
+    }
+    return sum % 10 === 0;
+  }
+  return -1;
 }
 
 /**
@@ -327,10 +350,10 @@ function isBracketsBalanced(str) {
     } else {
       const last = stack.pop();
       if ((last === undefined)
-      || (last === '[' && input[i] !== ']')
-      || (last === '(' && input[i] !== ')')
-      || (last === '{' && input[i] !== '}')
-      || (last === '<' && input[i] !== '>')) {
+        || (last === '[' && input[i] !== ']')
+        || (last === '(' && input[i] !== ')')
+        || (last === '{' && input[i] !== '}')
+        || (last === '<' && input[i] !== '>')) {
         error = true;
         break;
       }
