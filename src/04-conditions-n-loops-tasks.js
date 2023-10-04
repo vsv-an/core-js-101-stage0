@@ -415,7 +415,6 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-  // throw new Error('Not implemented');
   const commonPath = [];
   for (let i = 0; i < Math.min(...pathes.map((el) => el.length)); i += 1) {
     if (pathes.every((el) => el[i] === pathes[0][i])) commonPath.push(pathes[0][i]);
