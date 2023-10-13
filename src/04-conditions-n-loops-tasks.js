@@ -442,27 +442,27 @@ function getCommonDirectoryPath(pathes) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
-  // const result = [];
-  // const sec = m2.reduce(((acc, el) => {
-  //   for (let i = 0; i < el.length; i += 1) {
-  //     acc[i].push(el[i]);
-  //   }
-  //   return acc;
-  // }), Array.from({ length: m1.length }, () => []));
-  // for (let i = 0; i < m1.length; i += 1) {
-  //   const arr = [];
-  //   for (let j = 0; j < sec.length; j += 1) {
-  //     let x = 0;
-  //     for (let k = 0; k < m1[i].length; k += 1) {
-  //       x += m1[i][k] * sec[j][k];
-  //     }
-  //     arr.push(x);
-  //   }
-  //   result.push(arr);
-  // }
-  // return result;
+function getMatrixProduct(m1, m2) {
+  // throw new Error('Not implemented');
+  const result = [];
+  const sec = m2.reduce(((acc, el) => {
+    for (let i = 0; i < el.length; i += 1) {
+      acc[i].push(el[i]);
+    }
+    return acc;
+  }), Array.from({ length: m1.length }, () => []));
+  for (let i = 0; i < m1.length; i += 1) {
+    const arr = [];
+    for (let j = 0; j < sec.length; j += 1) {
+      let x = 0;
+      for (let k = 0; k < m1[i].length; k += 1) {
+        x += m1[i][k] * sec[j][k];
+      }
+      arr.push(x);
+    }
+    result.push(arr);
+  }
+  return result;
 }
 
 
